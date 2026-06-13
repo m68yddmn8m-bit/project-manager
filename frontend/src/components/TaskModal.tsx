@@ -141,7 +141,7 @@ export default function TaskModal({ projectId, taskId, users, isEditor, onClose,
                     </select>
                     <select
                       value={task.assignee?.id ?? ""}
-                      onChange={(e) => updateField({ assignee_id: e.target.value ? Number(e.target.value) : undefined })}
+                      onChange={(e) => updateField({ assignee: e.target.value ? Number(e.target.value) : undefined })}
                       className="text-xs border border-gray-200 rounded-full px-2 py-0.5 outline-none"
                     >
                       <option value="">Unassigned</option>

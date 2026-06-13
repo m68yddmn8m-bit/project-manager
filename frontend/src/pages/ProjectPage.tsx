@@ -75,7 +75,7 @@ export default function ProjectPage() {
   if (loading) return <div className="text-center py-16 text-gray-400">Loading…</div>;
   if (!project) return <div className="text-center py-16 text-red-400">Project not found.</div>;
 
-  const isEditor = project.owner_id === user?.id || project.members.some((m) => m.user_id === user?.id && m.role !== "viewer");
+  const isEditor = project.owner_id === user?.id || project.members.some((m) => m.id === user?.id && m.role !== "viewer");
 
   return (
     <div>
