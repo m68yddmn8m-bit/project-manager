@@ -1,0 +1,37 @@
+from datetime import datetime
+from pydantic import BaseModel, EmailStr
+
+
+class UserBase(BaseModel):
+    email: EmailStr
+    name: str
+    timezone: str = "UTC"
+
+
+class UserCreate(UserBase):
+    password: str
+
+
+class UserUpdate(BaseModel):
+    name: str | None = None
+    timezone: str | None = None
+    password: str | None = None
+
+
+class UserOut(UserBase):
+    id: int
+    is_active: bool
+    created_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    user: UserOut
+
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
